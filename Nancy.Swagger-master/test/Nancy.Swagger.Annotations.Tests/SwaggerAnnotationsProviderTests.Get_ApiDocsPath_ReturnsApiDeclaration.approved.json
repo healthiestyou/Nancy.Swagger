@@ -1,0 +1,33 @@
+﻿{
+    "swaggerVersion": "1.2",
+    "basePath": "/",
+    "apis": [
+        {
+            "path": "/api-docs",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Warning: no annotated method found for this route",
+                    "notes": "[example]",
+                    "nickname": "getApiDocs",
+                    "parameters": [],
+                    "type": "void"
+                }
+            ]
+        },
+        {
+            "path": "/api-docs/{resourcePath*}",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Warning: no annotated method found for this route",
+                    "notes": "[example]",
+                    "nickname": "getApiDocsResourcePath",
+                    "parameters": [],
+                    "type": "void"
+                }
+            ]
+        }
+    ],
+    "models": {}
+}
