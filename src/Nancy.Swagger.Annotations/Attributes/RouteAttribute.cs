@@ -3,6 +3,13 @@ using System;
 
 namespace Nancy.Swagger.Annotations.Attributes
 {
+    public enum NullableBool
+    {
+        Null = 0,
+        True = 1,
+        False = 2
+    }
+
     [AttributeUsage(AttributeTargets.Method, Inherited = true, AllowMultiple = true)]
     public class RouteAttribute : Attribute
     {
@@ -37,5 +44,7 @@ namespace Nancy.Swagger.Annotations.Attributes
         public string[] Produces { get; set; }
 
         public string[] Consumes { get; set; }
+
+        public NullableBool Show { get; set; }
     }
 }

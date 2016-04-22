@@ -14,12 +14,15 @@ namespace Nancy.Swagger
         /// The default resource listing path, <c>api-docs</c>.
         /// </summary>
         public const string DefaultResourceListingPath = "api-docs";
+        public const bool DefaultShowOnlyAnnotatedRoutes = false;
 
         static SwaggerConfig()
         {
             ResourceListingPath = DefaultResourceListingPath;
             ModelIdConvention = DefaultModelIdConvention;
-            NicknameConvention = DefaultNicknameConvention;        
+            NicknameConvention = DefaultNicknameConvention;
+            ShowOnlyAnnotatedRoutes = DefaultShowOnlyAnnotatedRoutes;
+
         }
 
         /// <summary>
@@ -39,6 +42,12 @@ namespace Nancy.Swagger
         /// Default value is <see cref="DefaultResourceListingPath"/>.
         /// </summary>
         public static string ResourceListingPath { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether only annotated routes are returned. 
+        /// Default value is <see cref="DefaultShowOnlyAnnotatedRoutes"/>.
+        /// </summary>
+        public static bool ShowOnlyAnnotatedRoutes { get; set; }
 
         /// <summary>
         /// Returns a unique model id for the given <paramref name="type"/>. 

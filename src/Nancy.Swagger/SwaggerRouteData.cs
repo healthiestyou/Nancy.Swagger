@@ -42,5 +42,7 @@ namespace Nancy.Swagger
         public IList<string> OperationConsumes { get; set; }
 
         public Type OperationModel { get; set; }
+
+        public bool Show { get; set; }
     }
 }

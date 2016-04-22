@@ -24,9 +24,9 @@ namespace Nancy.Swagger.Annotations
         public override IList<SwaggerModelData> RetrieveSwaggerModelData()
         {
             return RetrieveSwaggerRouteData()
-                    .GetDistinctModelTypes()
-                    .Select(CreateSwaggerModelData)
-                    .ToList();
+                .GetDistinctModelTypes()
+                .Select(CreateSwaggerModelData)
+                .ToList();
         }
 
         public override IList<SwaggerRouteData> RetrieveSwaggerRouteData()
@@ -34,7 +34,7 @@ namespace Nancy.Swagger.Annotations
             return _moduleCatalog
                 .GetAllModules(_context)
                 .SelectMany(ToSwaggerRouteData)
-                .ToList();
+                .Where(x => x.Show).ToList();
         }
 
         private SwaggerModelData CreateSwaggerModelData(Type type)
@@ -124,6 +124,7 @@ namespace Nancy.Swagger.Annotations
             {
                 data.OperationNotes = "[example]"; // TODO: Insert example how to annotate a route
                 data.OperationSummary = "Warning: no annotated method found for this route";
+                data.Show = !SwaggerConfig.ShowOnlyAnnotatedRoutes; ;
 
                 return data;
             }
@@ -135,6 +136,7 @@ namespace Nancy.Swagger.Annotations
                 data.OperationModel = attr.Response ?? data.OperationModel;
                 data.OperationConsumes = attr.Consumes ?? data.OperationConsumes;
                 data.OperationProduces = attr.Produces ?? data.OperationProduces;
+                data.Show = attr.Show != NullableBool.False;
             }
 
             data.OperationResponseMessages = handler.GetCustomAttributes<SwaggerResponseAttribute>()
